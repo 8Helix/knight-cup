@@ -5,6 +5,12 @@
   --color-violet: #7025fb;
   --color-crimson: #fd5334;
   --color-black: #212529;
+  --color-whitey: #f5f5f5;
+  --color-whitey-1: #e5e6e8;
+  --color-grey: #b9b4c3;
+  --color-light-grey: #95939a;
+  --color-light-grey-1: #e9ecef;
+  --color-blue: #093f68;
 }
 
 * {
@@ -17,9 +23,9 @@ html {
   font-size: 62.5%;
 }
 
-.container {
+.frame-grid {
   display: grid;
-  min-height: 100vh;
+  height: 100vh;
   grid-template-columns: 48% 52%;
 }
 
@@ -42,8 +48,16 @@ html {
   font-size: 2.1rem;
 }
 
-.black {
+.white-button {
+  background-color: #fff;
+  color: var(--color-black);
+  border: 1px solid var(--color-black) !important;
+  /* border-color: var(--color-black); */
+}
+
+.black-button {
   background-color: var(--color-black);
+  color: #fff;
 }
 
 .button {
@@ -56,18 +70,40 @@ html {
   font-family: 'Open Sans';
   font-size: 2rem;
   font-weight: 400;
-  color: #fff;
   cursor: pointer;
 }
 
-/*///////////////////////////////////////////////////// ////////////////////////////////////////////*/
+.main-section {
+  position: relative;
+  text-transform: uppercase;
+}
+
+.quote p {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 3.27rem;
+}
+
+.quote p > q {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 3.54rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*///////////////////////////////////////////// landing section ////////////////////////////////////////////*/
 
 .landing-section {
   height: 100%;
   background-color: var(--color-crimson);
   font-family: 'Nunito';
-  padding-top: 26.5rem;
-  padding-left: 8.5rem;
+  padding: 26.5rem 25.4rem 0 8.5rem;
 }
 
 .landing-section h1 {
@@ -76,6 +112,20 @@ html {
   font-weight: 800;
   text-transform: uppercase;
   display: block;
+  margin-bottom: 10.2rem;
+}
+
+.personalinfo-quote p {
+  position: absolute;
+  top: 33.5rem;
+  padding: 0 16.8rem 0 13.2rem;
+  color: var(--color-whitey-1);
+}
+
+.personalinfo-quote p > q {
+  display: block;
+  margin-bottom: 2.4rem;
+  color: var(--color-black);
 }
 
 .paragraph {
@@ -91,6 +141,209 @@ html {
   font-weight: 700;
 }
 
-.landing-button-mr {
-  margin-top: 10.2rem;
+/*////////////////////////////// personalinfo ////////////////////*/
+
+.start {
+  height: 8.4rem;
+  border-bottom: 1px solid var(--color-grey);
+  display: flex;
+  align-items: center;
+}
+
+.start p {
+  font-family: 'Open Sans';
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  color: var(--color-black);
+}
+
+.container {
+  padding: 0 17.4rem 0 4.8rem;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 3px;
+  background-color: var(--color-whitey-1);
+  color: var(--color-light-grey);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.45rem;
+}
+
+.step-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.step-description {
+  display: inline;
+  color: #000;
+  font-family: 'Open Sans';
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.step {
+  display: flex;
+  justify-content: start;
+  margin: 6rem 0 11.2rem 0;
+}
+
+.step-line > div {
+  height: 4rem;
+  width: 7.7rem;
+}
+
+.step-title {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  margin-bottom: 8.5rem;
+}
+
+.step-title h3 {
+  font-size: 3.2rem;
+  line-height: 4.8rem;
+  color: black;
+}
+
+.step-title p {
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: var(--color-light-grey);
+}
+
+.red {
+  color: var(--color-crimson);
+}
+
+.personal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-bottom: 8.8rem;
+}
+
+.personal-form input {
+  padding: 0.8rem 1.6rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--color-light-grey);
+  font-family: 'Open Sans';
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: var(--color-black);
+}
+
+.personal-form input:focus {
+  outline: none;
+  background-color: var(--color-light-grey-1);
+}
+/*///////////////////////// chess experience ///////////////////////////*/
+
+.experience-quote p {
+  position: absolute;
+  top: 26.1rem;
+  padding: 0 19.1rem 0 11.7rem;
+  color: var(--color-blue);
+  text-align: right;
+}
+
+.experience-quote p > q {
+  display: block;
+  margin-bottom: 3.2rem;
+  color: var(--color-black);
+  text-align: left;
+}
+
+.chess-form {
+  margin: 9.5rem 0 17.4rem 0;
+}
+
+.form-selectors {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.3rem;
+  margin-bottom: 8rem;
+}
+
+.form-selectors select {
+  padding: 0.8rem 1.6rem;
+  width: 39.2rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--color-grey) !important;
+  font-family: 'Open Sans';
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+  border-bottom: 1px solid;
+}
+
+.form-selectors select > option {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+.form-selectors select > option {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+.form-selectors select:first-child::after {
+  content: '*';
+  color: var(--color-crimson);
+}
+
+.chess-form p {
+  font-family: 'Open Sans';
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 3rem;
+}
+
+.asterisk::after {
+  content: '*';
+  color: var(--color-crimson);
+}
+
+.radio-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.radio-button {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.radio-button label {
+  margin-left: 1rem;
+}
+
+/*////////////////// onboaring ////////////////*/
+.onboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 41.6rem 31.7rem 0 27.8rem;
+}
+
+.onboard h4 {
+  font-family: 'Nunito';
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 5.4rem;
+  color: #000;
 }

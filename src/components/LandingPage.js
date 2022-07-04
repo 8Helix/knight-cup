@@ -1,19 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import ArrowCircle from './svgs/ArrowCircle';
-import LandingPhoto from '../imgs/Landing-photo.png';
+import LandingImage from '../imgs/Landing-image.png';
 import Frame from './Frame';
 
 function LandingPage() {
+  const navigate = useNavigate();
   return (
-    <Frame image={LandingPhoto}>
+    <Frame image={LandingImage}>
+      <></>
       <div className="landing-section">
         <h1>
           Chess says
           <div className="paragraph">
             <p>a lot about</p>
           </div>
+          who we are
         </h1>
-        <h1>who we are</h1>
-        <button className="button black landing-button-mr">
+        {/* <h1>who we are</h1> */}
+        <button
+          className="button black-button"
+          onClick={() => navigate('/personal-information')}
+        >
           Get Started <ArrowCircle />
         </button>
       </div>
