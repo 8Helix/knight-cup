@@ -22,22 +22,27 @@ function ChessExperience() {
         </InfoDescription>
         <form className="chess-form container">
           <div className="form-selectors">
-            <select name="level" id="level">
-              <option value="" hidden>
-                level of knowledge *
-              </option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="professional">Professional</option>
-            </select>
-            <select name="character" id="character">
-              <option value="" hidden>
-                Choose your character
-              </option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="professional">Professional</option>
-            </select>
+            <div className="firstone">
+              <select name="level" id="level">
+                <option value="beginner">Beginner</option>
+
+                <option value="" hidden>
+                  level of knowledge *
+                </option>
+                <option value="intermediate">Intermediate</option>
+                <option value="professional">Professional</option>
+              </select>
+            </div>
+            <div className="secondone">
+              <select name="character" id="character">
+                <option value="" hidden>
+                  Choose your character *
+                </option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="professional">Professional</option>
+              </select>
+            </div>
           </div>
           <p className="asterisk">
             Have you participated in the Redberry Championship?&nbsp;
