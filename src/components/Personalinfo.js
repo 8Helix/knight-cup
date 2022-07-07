@@ -1,25 +1,38 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-unused-vars */
 import Frame from './Frame';
 import PersonalinfoImage from '../imgs/Personalinfo-image.png';
 import InfoDescription from './InfoDescription';
 import Buttons from './Buttons';
 import CheckCircle from './svgs/CheckCircle';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import {
+  setFocus,
+  displayError,
+  returnOriginalStyle,
+  returnTypingStyle,
+  setDateClick,
+  setDateFocus,
+} from '../helpers/functions';
+import { InfoContext } from '../context/InfoContext';
 
 function Personalinfo() {
-  const [info, setInfo] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    birthdate: '',
-  });
+  const { info, setInfo } = useContext(InfoContext);
 
-  const [validInfo, setValidInfo] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    birthdate: '',
+  const [validInfo, setValidInfo] = useState(() => {
+    if (localStorage.getItem('Info')) {
+      return {
+        name: true,
+        email: true,
+        phone: true,
+        birthdate: true,
+      };
+    } else {
+      return {
+        name: '',
+        email: '',
+        phone: '',
+        birthdate: '',
+      };
+    }
   });
 
   const name = useRef(null);
@@ -27,82 +40,74 @@ function Personalinfo() {
   const phone = useRef(null);
   const birthdate = useRef(null);
 
+  const handleFocus = (e) => setFocus(e);
+  const handleDateClick = (e) => setDateClick(e, birthdate);
+  const handleDateFocus = (e) => setDateFocus(e, birthdate);
+
   function handleChange(e) {
     if (e.target.name === 'name') {
       if (e.target.value) {
-        name.current.style.visibility = 'hidden';
-        returnStyle(e);
+        returnTypingStyle(e);
       } else {
-        name.current.style.visibility = 'visible';
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
       }
     }
     if (e.target.name === 'email') {
       if (e.target.value) {
-        email.current.style.visibility = 'hidden';
-        returnStyle(e);
+        returnTypingStyle(e);
       } else {
-        email.current.style.visibility = 'visible';
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
       }
     }
     if (e.target.name === 'phone') {
       if (e.target.value) {
-        phone.current.style.visibility = 'hidden';
-        returnStyle(e);
+        returnTypingStyle(e);
       } else {
-        phone.current.style.visibility = 'visible';
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
       }
     }
     if (e.target.name === 'birthdate') {
-      birthdate.current.style.visibility = 'hidden';
-      returnStyle(e);
+      returnTypingStyle(e);
     }
 
     setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleFocus(e) {
-    e.target.previousElementSibling.focus();
-  }
-
-  function handleDateClick(e) {
-    birthdate.current.style.visibility = 'hidden';
-    e.target.style.color = 'black';
-  }
-
-  function handleDateFocus(e) {
-    birthdate.current.style.visibility = 'hidden';
-    e.target.previousElementSibling.style.color = 'black';
-    e.target.previousElementSibling.focus();
-  }
-
-  function handleValidation() {
-    if (!Object.values(validInfo).every((element) => element === true)) {
-      return false;
-    }
-    // gaushvi localhostshi
-    return true;
-  }
-
   function handleBlur(e) {
     if (e.target.name === 'name') {
-      if (info.name.trim().length === 1) {
+      if (info.name === '') {
+        returnOriginalStyle(e);
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        return;
+      }
+      if (info.name.trim().length <= 1) {
         displayError(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
       } else {
-        returnStyle(e);
+        returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
       }
     }
     if (e.target.name === 'email') {
+      if (info.email === '') {
+        returnOriginalStyle(e);
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        return;
+      }
       if (info.email.slice(-12) !== '@redberry.ge') {
         displayError(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
       } else {
-        returnStyle(e);
+        returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
       }
     }
     if (e.target.name === 'phone') {
+      if (info.phone === '') {
+        returnOriginalStyle(e);
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        return;
+      }
       if (
         info.phone.trim().length === 9 &&
         info.phone
@@ -110,7 +115,7 @@ function Personalinfo() {
           .split('')
           .every((number) => !isNaN(Number(number)))
       ) {
-        returnStyle(e);
+        returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
       } else {
         displayError(e);
@@ -122,20 +127,18 @@ function Personalinfo() {
         displayError(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
       } else {
-        returnStyle(e);
+        returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
       }
     }
   }
 
-  function displayError(e) {
-    e.target.style.backgroundColor = 'var(--color-error-backgroud)';
-    e.target.style.color = 'var(--color-error-text)';
-  }
-
-  function returnStyle(e) {
-    e.target.style.backgroundColor = '#fff';
-    e.target.style.color = 'var(--color-black)';
+  function handleValidation() {
+    if (!Object.values(validInfo).every((element) => element === true)) {
+      return false;
+    }
+    localStorage.setItem('Info', JSON.stringify(info));
+    return true;
   }
 
   return (
@@ -156,10 +159,16 @@ function Personalinfo() {
             <input
               type="text"
               name="name"
+              value={info?.name}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label htmlFor="name" ref={name} onClick={handleFocus}>
+            <label
+              htmlFor="name"
+              ref={name}
+              onClick={handleFocus}
+              className={info.name ? 'hidden' : 'visible'}
+            >
               Name
             </label>
             {validInfo.name && <CheckCircle />}
@@ -168,10 +177,16 @@ function Personalinfo() {
             <input
               type="email"
               name="email"
+              value={info?.email}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label htmlFor="email" ref={email} onClick={handleFocus}>
+            <label
+              htmlFor="email"
+              ref={email}
+              onClick={handleFocus}
+              className={info.email ? 'hidden' : 'visible'}
+            >
               Email address
             </label>
             {validInfo.email && <CheckCircle />}
@@ -180,10 +195,16 @@ function Personalinfo() {
             <input
               type="tel"
               name="phone"
+              value={info?.phone}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label htmlFor="phone" ref={phone} onClick={handleFocus}>
+            <label
+              htmlFor="phone"
+              ref={phone}
+              onClick={handleFocus}
+              className={info.phone ? 'hidden' : 'visible'}
+            >
               Phone number
             </label>
             {validInfo.phone && <CheckCircle />}
@@ -192,15 +213,18 @@ function Personalinfo() {
             <input
               type="date"
               name="birthdate"
+              value={info?.birthdate}
               onClick={handleDateClick}
               onChange={handleChange}
               onBlur={handleBlur}
+              className={info.birthdate ? 'black' : null}
             />
             <label
               id="date-label"
               htmlFor="date"
               ref={birthdate}
               onClick={handleDateFocus}
+              className={info.birthdate ? 'hidden' : 'visible'}
             >
               Date of birth
             </label>

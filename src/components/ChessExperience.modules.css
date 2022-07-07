@@ -1,0 +1,164 @@
+.experience-quote p {
+  position: absolute;
+  top: 26.1rem;
+  padding: 0 19.1rem 0 11.7rem;
+  color: var(--color-blue);
+  text-align: right;
+}
+
+.experience-quote p > q {
+  display: block;
+  margin-bottom: 3.2rem;
+  color: var(--color-black);
+  text-align: left;
+}
+
+.chess-form {
+  margin: 9.5rem 0 17.4rem 0;
+  font-family: 'Open Sans';
+}
+
+.form-selectors {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.3rem;
+  margin-bottom: 8rem;
+}
+
+.select-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+}
+
+.selected {
+  position: relative;
+  width: 39.2rem;
+  height: 4.6rem;
+  padding: 0.8rem 1.6rem;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.options-container,
+.masters-container {
+  position: absolute;
+  z-index: 9;
+  top: 5.1rem;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  /* padding: 1.5rem 0; */
+  transition: all 0.4s;
+  overflow: hidden;
+  border: 1px solid var(--color-light-grey-1);
+  background-color: #fff;
+}
+
+.options-container.active,
+.masters-container.active {
+  max-height: 41.9rem;
+  opacity: 1;
+}
+
+.masters-container {
+  overflow-y: scroll;
+}
+
+.level-option {
+  padding: 0.8rem 2rem;
+}
+
+.level-option,
+.selected,
+.masters-info {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--color-black);
+  cursor: pointer;
+}
+
+.level-option:hover,
+.masters-option:hover {
+  background: var(--color-light-grey-2);
+  font-weight: 700;
+  color: black;
+}
+
+.drop-down {
+  position: absolute;
+  top: 1.95rem;
+  right: 1.95rem;
+}
+
+.drop-up {
+  transform: rotateX(180deg);
+}
+
+.masters-container p {
+  padding: 1.6rem 0 0.2rem 2.8rem;
+  font-size: 1.6rem !important;
+  font-weight: 600 !important;
+  line-height: 2.4rem !important;
+  color: #817d7d;
+}
+
+.masters-option {
+  padding: 0.8rem 1.1rem 0.8rem 2.8rem;
+}
+
+.masters-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.masters-info img {
+  height: 7.2rem;
+}
+
+.masters-container::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 33.6rem;
+  background: var(--color-light-grey-1);
+}
+
+.masters-container::-webkit-scrollbar-thumb {
+  background: #cbcfd2;
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.radio {
+  display: none;
+}
+
+.chess-form p {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 3rem;
+}
+
+.asterisk::after {
+  content: ' *';
+  color: var(--color-crimson);
+}
+
+.radio-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.radio-button {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.radio-button label {
+  margin-left: 1rem;
+}
