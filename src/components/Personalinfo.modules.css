@@ -5,6 +5,20 @@
   align-items: center;
 }
 
+.info-form {
+  position: relative;
+}
+
+.info-module {
+  position: absolute;
+  right: 3.9rem;
+  width: 35rem;
+  height: 7rem;
+  margin-bottom: 1rem;
+  background-color: var(--color-light-grey-2);
+  padding: 0.6rem 0 1rem 0;
+}
+
 .start p {
   font-family: 'Open Sans';
   font-size: 1.6rem;
@@ -14,6 +28,7 @@
 }
 
 .personal-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4rem;

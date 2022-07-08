@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import DropDown from './svgs/DropDown';
-import { useRef, useState, useContext, useEffect } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { InfoContext } from '../context/InfoContext';
 
 const levelArr = ['Beginner', 'Intermediate', 'Professional'];
@@ -41,22 +40,6 @@ function ChessForm({ grandmasters }) {
     const value = e.target.value === 'yes' ? true : false;
     setInfo((prev) => ({ ...prev, already_participated: value }));
   }
-
-  useEffect(() => {
-    setInfo(() => {
-      const data = localStorage.getItem('Info');
-      if (data) return { ...JSON.parse(data) };
-      return {
-        name: '',
-        email: '',
-        phone: '',
-        date_of_birth: '',
-        experience_level: '',
-        already_participated: true,
-        character_id: '',
-      };
-    });
-  }, []);
 
   return (
     <form className="chess-form container">

@@ -27,21 +27,21 @@ function PersonalForm({ validInfo, setValidInfo }) {
       if (e.target.value) {
         returnTypingStyle(e);
       } else {
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       }
     }
     if (e.target.name === 'email') {
       if (e.target.value) {
         returnTypingStyle(e);
       } else {
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       }
     }
     if (e.target.name === 'phone') {
       if (e.target.value) {
         returnTypingStyle(e);
       } else {
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       }
     }
     if (e.target.name === 'date_of_birth') {
@@ -55,12 +55,12 @@ function PersonalForm({ validInfo, setValidInfo }) {
     if (e.target.name === 'name') {
       if (info.name === '') {
         returnOriginalStyle(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
         return;
       }
       if (info.name.trim().length <= 1) {
         displayError(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       } else {
         returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
@@ -69,12 +69,12 @@ function PersonalForm({ validInfo, setValidInfo }) {
     if (e.target.name === 'email') {
       if (info.email === '') {
         returnOriginalStyle(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
         return;
       }
       if (info.email.slice(-12) !== '@redberry.ge') {
         displayError(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       } else {
         returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
@@ -83,7 +83,7 @@ function PersonalForm({ validInfo, setValidInfo }) {
     if (e.target.name === 'phone') {
       if (info.phone === '') {
         returnOriginalStyle(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
         return;
       }
       if (
@@ -97,13 +97,13 @@ function PersonalForm({ validInfo, setValidInfo }) {
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));
       } else {
         displayError(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       }
     }
     if (e.target.name === 'date_of_birth') {
       if (!info.date_of_birth) {
         displayError(e);
-        setValidInfo((prev) => ({ ...prev, [e.target.name]: false }));
+        setValidInfo((prev) => ({ ...prev, [e.target.name]: '' }));
       } else {
         returnOriginalStyle(e);
         setValidInfo((prev) => ({ ...prev, [e.target.name]: true }));

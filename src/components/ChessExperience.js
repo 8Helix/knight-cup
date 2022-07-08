@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Frame from './Frame';
 import ChessInfoImage from '../imgs/ChessInfo-image.png';
 import InfoDescription from './InfoDescription';
@@ -10,7 +9,7 @@ import './ChessExperience.modules.css';
 import ChessForm from './ChessForm';
 
 function ChessExperience() {
-  const { info } = useContext(InfoContext);
+  const { info, setInfo } = useContext(InfoContext);
   const [grandmasters, setGrandmasters] = useState([]);
 
   function handleValidation() {
@@ -30,6 +29,15 @@ function ChessExperience() {
       body: JSON.stringify(info),
     });
     localStorage.removeItem('Info');
+    setInfo({
+      name: '',
+      email: '',
+      phone: '',
+      date_of_birth: '',
+      experience_level: '',
+      already_participated: true,
+      character_id: '',
+    });
     return true;
   }
 

@@ -19,8 +19,6 @@ function InfoContextProvider({ children }) {
     };
   });
 
-  console.log(info);
-
   useEffect(() => {
     if (firstRender) {
       firstRender = false;
