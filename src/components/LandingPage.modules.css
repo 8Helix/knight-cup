@@ -1,0 +1,41 @@
+.landing-section {
+  height: 100%;
+  background-color: var(--color-crimson);
+  font-family: 'Nunito';
+  padding: 26.5rem 25.4rem 0 8.5rem;
+}
+
+.landing-section h1 {
+  color: #fff;
+  font-size: 8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10.2rem;
+}
+
+.personalinfo-quote p {
+  position: absolute;
+  top: 33.5rem;
+  padding: 0 16.8rem 0 13.2rem;
+  color: var(--color-whitey-1);
+}
+
+.personalinfo-quote p > q {
+  display: block;
+  margin-bottom: 2.4rem;
+  color: var(--color-black);
+}
+
+.paragraph {
+  color: black;
+  text-transform: uppercase;
+  display: inline-block;
+  padding-left: 2.6rem;
+  transform: translateY(-60%);
+}
+
+.paragraph p {
+  font-size: 2rem;
+  font-weight: 700;
+}

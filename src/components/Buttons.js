@@ -1,12 +1,12 @@
 import ArrowCircle from './svgs/ArrowCircle';
 import { useNavigate } from 'react-router-dom';
 
-function Buttons({ back, next, validateInfo }) {
+function Buttons({ back, next, label, validateInfo }) {
   const navigate = useNavigate();
 
   function handleNextClick() {
     if (!validateInfo()) return;
-    navigate(next);
+    navigate(next, { state: { parampa: true } });
   }
 
   return (
@@ -15,7 +15,7 @@ function Buttons({ back, next, validateInfo }) {
         Back
       </button>
       <button className="button black-button" onClick={handleNextClick}>
-        Next <ArrowCircle />
+        {label} {label === 'Next' ? <ArrowCircle /> : null}
       </button>
     </div>
   );

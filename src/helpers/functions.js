@@ -36,3 +36,9 @@ export async function goFetch(url) {
   }
   throw new Error("Couldn't fetch Users");
 }
+
+export async function sendData(url, options) {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+}
