@@ -80,7 +80,11 @@ function ChessExperience() {
           <>First step is done, continue to finish onboarding</>
           <>Chess experience</>
         </InfoDescription>
-        <ChessForm grandmasters={grandmasters} />
+        <ChessForm
+          grandmasters={grandmasters}
+          validInfo={validInfo}
+          setValidInfo={setValidInfo}
+        />
         <Buttons
           back="/personal-information"
           next="/onboarding"

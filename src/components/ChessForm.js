@@ -4,7 +4,7 @@ import { InfoContext } from '../context/InfoContext';
 
 const levelArr = ['Beginner', 'Intermediate', 'Professional'];
 
-function ChessForm({ grandmasters }) {
+function ChessForm({ grandmasters, validInfo, setValidInfo }) {
   const { info, setInfo } = useContext(InfoContext);
   const [levelOptions, setLevelOptions] = useState(false);
   const [characterOptions, setCharacterOptions] = useState(false);
@@ -24,6 +24,10 @@ function ChessForm({ grandmasters }) {
       ...prev,
       experience_level: level,
     }));
+    setValidInfo((prev) => ({
+      ...prev,
+      experience_level: '',
+    }));
     setLevelOptions(false);
   }
 
@@ -33,6 +37,10 @@ function ChessForm({ grandmasters }) {
 
   function handleMastersClick(id) {
     setInfo((prev) => ({ ...prev, character_id: id }));
+    setValidInfo((prev) => ({
+      ...prev,
+      character_id: '',
+    }));
     setCharacterOptions(false);
   }
 
@@ -45,7 +53,16 @@ function ChessForm({ grandmasters }) {
     <form className="chess-form container">
       <div className="form-selectors">
         <div className="select-box">
-          <div className="selected" onClick={handleLevelDrop}>
+          <div
+            className="selected"
+            onClick={handleLevelDrop}
+            style={{
+              backgroundColor:
+                validInfo.experience_level === false
+                  ? 'var(--color-error-backgroud)'
+                  : '#fff',
+            }}
+          >
             <span ref={levelRef}>
               {info.experience_level ? (
                 <>
@@ -79,7 +96,16 @@ function ChessForm({ grandmasters }) {
           </div>
         </div>
         <div className="select-box">
-          <div className="selected" onClick={handleCharacterDrop}>
+          <div
+            className="selected"
+            onClick={handleCharacterDrop}
+            style={{
+              backgroundColor:
+                validInfo.character_id === false
+                  ? 'var(--color-error-backgroud)'
+                  : '#fff',
+            }}
+          >
             <span ref={masterRef}>
               {info.character_id ? (
                 <>{grandmasters[info.character_id - 1]?.name}</>

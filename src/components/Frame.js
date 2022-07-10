@@ -8,7 +8,13 @@ function Frame({ image, children }) {
           <KnightCupLogo />
           <h2>Redberry Knight Cup</h2>
         </div>
-        <img className="main-img" src={image} alt={Object.keys({ image })[0]} />
+        <div className="img-box">
+          <img
+            className="main-img"
+            src={image}
+            alt={Object.keys({ image })[0]}
+          />
+        </div>
         {children[0]}
       </div>
       <div>{children[1]}</div>
