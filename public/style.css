@@ -26,9 +26,20 @@ html {
   font-size: 62.5%;
 }
 
+@media (max-width: 1400px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 37.5%;
+  }
+}
+
 .frame-grid {
   display: grid;
-  height: 100vh;
   grid-template-columns: 48% 52%;
 }
 
