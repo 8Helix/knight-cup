@@ -22,7 +22,7 @@ function ChessForm({ grandmasters, validInfo, setValidInfo }) {
     }
     setInfo((prev) => ({
       ...prev,
-      experience_level: level,
+      experience_level: level.toLowerCase(),
     }));
     setValidInfo((prev) => ({
       ...prev,
@@ -68,7 +68,8 @@ function ChessForm({ grandmasters, validInfo, setValidInfo }) {
                 <>
                   {info.experience_level === 'normal'
                     ? 'Intermediate'
-                    : info.experience_level}
+                    : info.experience_level.charAt(0).toUpperCase() +
+                      info.experience_level.slice(1)}
                 </>
               ) : (
                 <>
