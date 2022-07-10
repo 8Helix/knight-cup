@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useMemo } from 'react';
 import Frame from './Frame';
 import PersonalinfoImage from '../imgs/Personalinfo-image.png';
 import InfoDescription from './InfoDescription';
@@ -6,29 +6,23 @@ import Buttons from './Buttons';
 import { InfoContext } from '../context/InfoContext';
 import './Personalinfo.modules.css';
 import PersonalForm from './PersonalForm';
-import ExclamationCircle from './svgs/ExclamationCircle';
-import X from './svgs/X';
+import ErrorBox from './ErrorBox';
+import { validChecker } from '../helpers/functions';
+import { v4 } from 'uuid';
 
 function Personalinfo() {
   const { info } = useContext(InfoContext);
 
-  const [validInfo, setValidInfo] = useState(() => {
-    if (info.name && info.email && info.phone && info.date_of_birth) {
-      return {
-        name: true,
-        email: true,
-        phone: true,
-        date_of_birth: true,
-      };
-    } else {
-      return {
-        name: '',
-        email: '',
-        phone: '',
-        date_of_birth: '',
-      };
-    }
+  const [validInfo, setValidInfo] = useState({
+    name: validChecker(info, 'name'),
+    email: validChecker(info, 'email'),
+    phone: validChecker(info, 'phone'),
+    date_of_birth: '',
   });
+
+  let x = useMemo(() => {
+    return -1;
+  }, [validInfo]);
 
   function handleValidation() {
     if (!Object.values(validInfo).every((element) => element === true)) {
@@ -74,19 +68,62 @@ function Personalinfo() {
           label="Next"
           validateInfo={handleValidation}
         />
-        <div className="info-module" style={{ top: '25rem' }}>
-          <div className="error">
-            <div>
-              <ExclamationCircle />
-              <span className="red">Invalid email</span>
-            </div>
-            <X />
-          </div>
-          <p>Please enter valid email address</p>
-        </div>
-        <div className="info-module" style={{ top: '17rem' }}></div>
-        <div className="info-module" style={{ top: '9rem' }}></div>
-        <div className="info-module" style={{ top: '1rem' }}></div>
+        {Object.values(validInfo).map((item, i) => {
+          if (item === false) {
+            x++;
+            switch (i) {
+              case 0:
+                return (
+                  <ErrorBox
+                    title="Invalid level"
+                    message="Please enter valid name"
+                    setValidInfo={setValidInfo}
+                    validInfo={validInfo}
+                    x={x}
+                    index={i}
+                    key={v4()}
+                  />
+                );
+              case 1:
+                return (
+                  <ErrorBox
+                    title="Invalid email"
+                    message="Please enter valid email address"
+                    setValidInfo={setValidInfo}
+                    validInfo={validInfo}
+                    x={x}
+                    index={i}
+                    key={v4()}
+                  />
+                );
+              case 2:
+                return (
+                  <ErrorBox
+                    title="Invalid phone"
+                    message="Please enter valid phone number"
+                    setValidInfo={setValidInfo}
+                    validInfo={validInfo}
+                    x={x}
+                    index={i}
+                    key={v4()}
+                  />
+                );
+
+              case 3:
+                return (
+                  <ErrorBox
+                    title="Invalid date"
+                    message="Please enter valid birth date"
+                    setValidInfo={setValidInfo}
+                    validInfo={validInfo}
+                    x={x}
+                    index={i}
+                    key={v4()}
+                  />
+                );
+            }
+          }
+        })}
       </div>
     </Frame>
   );

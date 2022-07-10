@@ -36,3 +36,65 @@ export async function goFetch(url) {
   }
   throw new Error("Couldn't fetch Users");
 }
+
+export function validChecker(info, key) {
+  if (key === 'name') {
+    if (info.name === '') {
+      return '';
+    }
+    if (info.name.trim().length <= 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  if (key === 'email') {
+    if (info.email === '') {
+      return '';
+    }
+    if (info.email.slice(-12) !== '@redberry.ge') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  if (key === 'phone') {
+    if (info.phone === '') {
+      return '';
+    }
+    if (
+      info.phone.trim().length === 9 &&
+      info.phone
+        .trim()
+        .split('')
+        .every((number) => !isNaN(Number(number)))
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  if (key === 'date_of_birth') {
+    if (!info.date_of_birth) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  if (key === 'experience_level') {
+    if (!info.experience_level) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  if (key === 'character_id') {
+    if (!info.character_id) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
