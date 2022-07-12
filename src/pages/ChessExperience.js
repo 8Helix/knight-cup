@@ -1,13 +1,13 @@
-import Frame from './Frame';
+import Frame from '../components/Frame';
 import ChessInfoImage from '../imgs/ChessInfo-image.png';
-import InfoDescription from './InfoDescription';
-import Buttons from './Buttons';
+import InfoDescription from '../components/InfoDescription';
+import Buttons from '../components/Buttons';
 import { useEffect, useState, useContext, useMemo } from 'react';
 import { goFetch } from '../helpers/functions';
 import { InfoContext } from '../context/InfoContext';
 import './ChessExperience.modules.css';
-import ChessForm from './ChessForm';
-import ErrorBox from './ErrorBox';
+import ChessForm from '../components/ChessForm';
+import ErrorBox from '../components/ErrorBox';
 import { validChecker } from '../helpers/functions';
 import { v4 } from 'uuid';
 

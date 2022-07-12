@@ -1,12 +1,12 @@
 import { useContext, useState, useMemo } from 'react';
-import Frame from './Frame';
+import Frame from '../components/Frame';
 import PersonalinfoImage from '../imgs/Personalinfo-image.png';
-import InfoDescription from './InfoDescription';
-import Buttons from './Buttons';
+import InfoDescription from '../components/InfoDescription';
+import Buttons from '../components/Buttons';
 import { InfoContext } from '../context/InfoContext';
 import './Personalinfo.modules.css';
-import PersonalForm from './PersonalForm';
-import ErrorBox from './ErrorBox';
+import PersonalForm from '../components/PersonalForm';
+import ErrorBox from '../components/ErrorBox';
 import { validChecker } from '../helpers/functions';
 import { v4 } from 'uuid';
 

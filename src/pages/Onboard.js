@@ -1,4 +1,4 @@
-import Frame from './Frame';
+import Frame from '../components/Frame';
 import OnBoading from '../imgs/OnBoarding.png';
 import SuccessRocket from '../imgs/SuccessRocket.png';
 import './OnBoard.modules.css';

@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import ChessExperience from './components/ChessExperience';
-import LandingPage from './components/LandingPage';
-import Onboard from './components/Onboard';
-import Personalinfo from './components/Personalinfo';
+import ChessExperience from './pages/ChessExperience';
+import LandingPage from './pages/LandingPage';
+import Onboard from './pages/Onboard';
+import Personalinfo from './pages/Personalinfo';
 import { InfoContextProvider } from './context/InfoContext';
 
 function App() {

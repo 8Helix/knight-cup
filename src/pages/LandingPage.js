@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import ArrowCircle from './svgs/ArrowCircle';
+import ArrowCircle from '../components/svgs/ArrowCircle';
 import LandingImage from '../imgs/Landing-image.png';
-import Frame from './Frame';
+import Frame from '../components/Frame';
 import './LandingPage.modules.css';
 
 function LandingPage() {
